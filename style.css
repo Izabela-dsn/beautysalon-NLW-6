@@ -89,6 +89,18 @@ section {
   padding: 5rem 0;
 }
 
+section .title {
+  margin-bottom: 1rem;
+}
+
+section header {
+  margin-bottom: 4rem;
+}
+
+section header strong {
+  color: var(--base-color);
+}
+
 #home {
   overflow: hidden;
 }
@@ -158,7 +170,19 @@ section {
 hr {
   border: none;
   height: 1px;
-  background: linear-gradient(270deg, #69b99d, rgba(204, 244, 230, 0.34));
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 36%, 57%, 1),
+    hsla(var(--hue), 65%, 88%, 0.34)
+  );
+}
+
+hr:nth-child(4) {
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 65%, 88%, 0.34),
+    hsla(var(--hue), 36%, 57%, 1)
+  );
 }
 
 /*----------- Menu Navegação -------------------------*/
@@ -239,4 +263,72 @@ nav.show .icon-close {
 nav .icon-close {
   visibility: hidden;
   opacity: 0;
+}
+
+/* ------------------------- Sobre --------------*/
+
+#about {
+  background-color: white;
+}
+
+#about .container {
+  margin: 0;
+}
+
+#about .image {
+  position: relative;
+}
+
+/*cria elemento fantasma, aquele quadrado verde atrás da foto*/
+#about .image::before {
+  content: '';
+  height: 100%;
+  width: 100%;
+  background: var(--base-color-second);
+  position: absolute;
+  top: -8.3%;
+  left: -33%;
+  z-index: 0;
+}
+
+#about .image img {
+  position: relative;
+}
+
+#about .image img,
+#about .image::before {
+  border-radius: 0.25rem;
+}
+
+#about .text {
+  margin: 0 1.5rem;
+}
+
+/* ----- Services - cards ------------*/
+#services .container {
+  width: 90%;
+}
+
+.cards.grid {
+  gap: 1.5rem;
+}
+
+.card {
+  padding: 3.625rem 2rem;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
+  border-bottom: 0.25rem solid var(--base-color);
+  border-radius: 0.25rem 0.25rem 0 0;
+  text-align: center;
+}
+
+.card i {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-size: 5rem;
+  color: var(--base-color);
+}
+
+.card .title {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
 }
