@@ -193,6 +193,14 @@ hr:nth-child(4) {
   );
 }
 
+hr:nth-child(8) {
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 65%, 88%, 0.34),
+    hsla(var(--hue), 36%, 57%, 1)
+  );
+}
+
 /*----------- Menu Navegação -------------------------*/
 nav ul li {
   text-align: center;
@@ -416,4 +424,36 @@ nav.show .icon-close {
 
 .swiper-pagination-bullet-active {
   background: var(--base-color);
+}
+
+/* ----------------- Contato --------------------------------*/
+#contact .container {
+  width: 90%;
+}
+
+#contact .grid {
+  gap: 4rem;
+}
+
+#contact .text p {
+  margin-bottom: 2rem;
+}
+
+#contact .button i,
+#contact ul li i {
+  font-size: 1.5rem;
+  margin-right: 0.625rem;
+}
+
+#contact ul.grid {
+  gap: 1.5rem;
+}
+
+#contact ul li {
+  display: flex;
+  align-items: center;
+}
+
+#contact ul li i {
+  color: var(--base-color);
 }
