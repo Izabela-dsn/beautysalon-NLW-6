@@ -360,7 +360,14 @@ nav.show .icon-close {
 }
 
 #testimonials .container {
-  width: 90%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#testimonials header {
+  margin-bottom: 0;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
 }
 
 #testimonials blockquote {
@@ -399,4 +406,14 @@ nav.show .icon-close {
 #testimonials cite {
   display: flex;
   align-items: center;
+}
+
+/* --- swiper ---*/
+.swiper-slide {
+  height: auto;
+  padding: 4rem 1rem;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--base-color);
 }
