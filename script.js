@@ -21,3 +21,15 @@ for (const link of links) {
     nav.classList.remove('show')
   })
 }
+
+// Colocar sombra no header ao rolar a pagina
+const header = document.querySelector('#header')
+navHeight = header.offsetHeight
+
+window.addEventListener('scroll', function () {
+  if (window.scrollY >= navHeight) {
+    header.classList.add('scroll')
+  } else {
+    header.classList.remove('scroll')
+  }
+})
