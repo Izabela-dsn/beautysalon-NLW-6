@@ -23,16 +23,17 @@ for (const link of links) {
 }
 
 // Colocar sombra no header ao rolar a pagina
-const header = document.querySelector('#header')
-navHeight = header.offsetHeight
 
-window.addEventListener('scroll', function () {
+function putShadowInHeaderWhenScroll() {
+  const header = document.querySelector('#header')
+  navHeight = header.offsetHeight
+
   if (window.scrollY >= navHeight) {
     header.classList.add('scroll')
   } else {
     header.classList.remove('scroll')
   }
-})
+}
 
 // Slide dos testemunhos pelo swiper
 const swiper = new Swiper('.swiper-container', {
@@ -63,7 +64,25 @@ scrollReveal.reveal(
   #testimonials header, 
   #testimonials .testimonials,
   #contact .text,
-  #contact .links
+  #contact .links,
+  footer .brand, footer .social
   `,
   { interval: 100 }
 )
+
+// aparecer botão de ir para topo quando a página rolar
+function goBackToTop() {
+  const backToTopButton = document.querySelector('.back-to-top')
+
+  if (window.scrollY >= 560) {
+    backToTopButton.classList.add('show')
+  } else {
+    backToTopButton.classList.remove('show')
+  }
+}
+
+//funções que precisam do scroll para funcionar
+window.addEventListener('scroll', function () {
+  putShadowInHeaderWhenScroll()
+  goBackToTop()
+})
