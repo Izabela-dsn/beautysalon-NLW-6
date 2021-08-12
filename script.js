@@ -24,10 +24,9 @@ for (const link of links) {
 
 // Colocar sombra no header ao rolar a pagina
 
+const header = document.querySelector('#header')
+navHeight = header.offsetHeight
 function putShadowInHeaderWhenScroll() {
-  const header = document.querySelector('#header')
-  navHeight = header.offsetHeight
-
   if (window.scrollY >= navHeight) {
     header.classList.add('scroll')
   } else {
@@ -42,14 +41,20 @@ const swiper = new Swiper('.swiper-container', {
     el: '.swiper-pagination'
   },
   mousewheel: true,
-  keyboard: true
+  keyboard: true,
+  breakpoints: {
+    767: {
+      slidesPerView: 2,
+      setWrapperSize: true
+    }
+  }
 })
 
 // Aparecer o conteúdo da pagina quando for rolando ela
 const scrollReveal = ScrollReveal({
   origin: 'top',
   distance: '30px',
-  duration: 700,
+  duration: 500,
   reset: true
 })
 
@@ -71,9 +76,8 @@ scrollReveal.reveal(
 )
 
 // aparecer botão de ir para topo quando a página rolar
+const backToTopButton = document.querySelector('.back-to-top')
 function goBackToTop() {
-  const backToTopButton = document.querySelector('.back-to-top')
-
   if (window.scrollY >= 560) {
     backToTopButton.classList.add('show')
   } else {
@@ -81,8 +85,34 @@ function goBackToTop() {
   }
 }
 
+// Menu selecionado quando a sessão estiver visível
+const sections = document.querySelectorAll('main section[id]')
+function activateMenuAtCurrentSection() {
+  const checkpoint = window.pageYOffset + (window.innerHeight / 8) * 4
+
+  for (let section of sections) {
+    const sectionTop = section.offsetTop
+    const sectionHeight = section.offsetHeight
+    const sectionId = section.getAttribute('id')
+
+    const checkpointStart = checkpoint >= sectionTop
+    const checkpointEnd = checkpoint <= sectionTop + sectionHeight
+
+    if (checkpointStart && checkpointEnd) {
+      document
+        .querySelector(`nav ul li a[href*=${sectionId}]`)
+        .classList.add('active')
+    } else {
+      document
+        .querySelector(`nav ul li a[href*=${sectionId}]`)
+        .classList.remove('active')
+    }
+  }
+}
+
 //funções que precisam do scroll para funcionar
 window.addEventListener('scroll', function () {
   putShadowInHeaderWhenScroll()
   goBackToTop()
+  activateMenuAtCurrentSection()
 })
